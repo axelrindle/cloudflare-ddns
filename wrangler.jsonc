@@ -8,5 +8,24 @@
             "enabled": true,
             "persist": true
         }
-    }
+    },
+    "routes": [
+        {
+            "custom_domain": true,
+            "pattern": "ddns.rindle.dev",
+            "zone_name": "rindle.dev"
+        }
+    ],
+    "secrets_store_secrets": [
+        {
+            "binding": "telegramBotToken",
+            "secret_name": "TELEGRAM_BOT_TOKEN",
+            "store_id": "default_secrets_store"
+        },
+        {
+            "binding": "telegramChatId",
+            "secret_name": "TELEGRAM_CHAT_ID",
+            "store_id": "default_secrets_store"
+        }
+    ]
 }

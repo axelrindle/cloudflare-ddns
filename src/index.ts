@@ -1,8 +1,11 @@
 import { zValidator } from '@hono/zod-validator'
 import { Hono } from 'hono'
 import z from 'zod'
+import { sendMessage } from './telegram'
 
-const app = new Hono()
+const app = new Hono<{
+    Bindings: CloudflareBindings
+}>()
 
 app.post('/',
     zValidator('json', z.strictObject({
@@ -41,6 +44,13 @@ app.post('/',
                 }
             }
         }
+
+        const tgMsg = `New public IPv6 address: ${ipv6}`
+        await sendMessage(
+            await c.env.telegramBotToken.get(),
+            await c.env.telegramChatId.get(),
+            tgMsg,
+        )
 
         return c.json({ ok: true })
     },
