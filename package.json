@@ -1,0 +1,26 @@
+{
+  "name": "cloudflare-ddns",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "deploy": "wrangler deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "lint": "eslint --concurrency auto",
+    "lint:inspect": "bunx @eslint/config-inspector"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.7.6",
+    "hono": "^4.12.5",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@actcoding/eslint-config": "^0.0.12-2",
+    "@cloudflare/vite-plugin": "^1.26.1",
+    "@eslint/config-inspector": "^1.5.0",
+    "@eslint/json": "^1.1.0",
+    "eslint": "^10.0.3",
+    "vite": "^6.4.1",
+    "vite-ssr-components": "^0.5.2",
+    "wrangler": "^4.71.0"
+  }
+}
