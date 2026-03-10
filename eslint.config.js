@@ -3,7 +3,13 @@ import { defineConfig } from 'eslint/config'
 import json from '@eslint/json'
 
 export default defineConfig([
-    ...configActDefault,
+    ...configActDefault.filter(c => c.name !== 'act/defaults/import'),
+    {
+        name: 'app/ignores',
+        ignores: [
+            'src/gen/**',
+        ],
+    },
     {
         name: 'app/json',
         plugins: {
