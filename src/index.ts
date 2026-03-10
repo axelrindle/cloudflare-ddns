@@ -52,8 +52,8 @@ app.post('/',
 
         const tgMsg = `New public IPv6 address: ${ipv6}`
         await sendMessage(
-            await c.env.telegramBotToken.get(),
-            await c.env.telegramChatId.get(),
+            c.env.TELEGRAM_BOT_TOKEN,
+            c.env.TELEGRAM_CHAT_ID,
             tgMsg,
         )
 
