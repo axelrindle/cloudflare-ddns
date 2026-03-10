@@ -16,4 +16,7 @@
             "zone_name": "rindle.dev"
         }
     ],
+    "assets": {
+        "directory": "public"
+    }
 }
