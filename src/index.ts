@@ -2,12 +2,17 @@ import { zValidator } from '@hono/zod-validator'
 import { Hono } from 'hono'
 import z from 'zod'
 import { sendMessage } from './telegram'
+import { bearerAuth } from 'hono/bearer-auth'
 
 const app = new Hono<{
     Bindings: CloudflareBindings
 }>()
 
 app.post('/',
+    async (c, next) => {
+        const handler = bearerAuth({ token: c.env.ACCESS_TOKEN })
+        return handler(c, next)
+    },
     zValidator('json', z.strictObject({
         ipv6: z.ipv6(),
         zones: z.array(z.strictObject({
