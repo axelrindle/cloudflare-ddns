@@ -2,8 +2,8 @@
   "name": "cloudflare-ddns",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings src/gen/wrangler.d.ts",
     "lint": "eslint --concurrency auto",
     "lint:inspect": "bunx @eslint/config-inspector"
@@ -15,12 +15,9 @@
   },
   "devDependencies": {
     "@actcoding/eslint-config": "^0.0.12-2",
-    "@cloudflare/vite-plugin": "^1.26.1",
     "@eslint/config-inspector": "^1.5.0",
     "@eslint/json": "^1.1.0",
     "eslint": "^10.0.3",
-    "vite": "^7.3.1",
-    "vite-ssr-components": "^0.5.2",
     "wrangler": "^4.71.0"
   }
 }
