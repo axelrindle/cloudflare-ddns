@@ -46,7 +46,7 @@ app.post('/',
 
             const url = `https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records/batch`
             const res = await fetch(url, {
-                method: 'PATCH',
+                method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
