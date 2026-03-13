@@ -1,6 +1,7 @@
 import { mkdir } from 'node:fs/promises'
 import app, { scalarConfiguration } from '.'
 import { writeFile } from 'node:fs/promises'
+import { HtmlRenderingConfiguration } from '@scalar/types/api-reference'
 
 const server = Bun.serve({
     fetch(req) {
@@ -16,7 +17,15 @@ const openapi = await server.fetch('/api.json')
 const config = {
     ...scalarConfiguration,
     url: `/${process.env.PAGES_BASE_PATH}/api.json`,
-}
+    servers: [
+        {
+            url: '{baseUrl}',
+            variables: {
+                baseUrl: {},
+            },
+        },
+    ],
+} satisfies Partial<HtmlRenderingConfiguration>
 
 const html = `
 <!doctype html>

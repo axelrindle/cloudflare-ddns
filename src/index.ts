@@ -58,6 +58,7 @@ const scalarConfiguration = {
 app.get('/api.html',
     onlyDevelopment,
     Scalar({
+        ...scalarConfiguration,
         url: '/api.json',
     }),
 )
