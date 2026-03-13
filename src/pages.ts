@@ -19,9 +19,15 @@ const config = {
     url: `/${process.env.PAGES_BASE_PATH}/api.json`,
     servers: [
         {
-            url: '{baseUrl}',
+            url: 'http://{insecureBaseUrl}',
             variables: {
-                baseUrl: {},
+                insecureBaseUrl: {},
+            },
+        },
+        {
+            url: 'https://{secureBaseUrl}',
+            variables: {
+                secureBaseUrl: {},
             },
         },
     ],
