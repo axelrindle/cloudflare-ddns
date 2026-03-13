@@ -53,6 +53,7 @@ jobs:
     needs:
       - test
     permissions:
+      id-token: write
       pages: write
     concurrency:
       group: pages
