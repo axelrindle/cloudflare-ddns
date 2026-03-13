@@ -35,3 +35,4 @@ lerna-debug.log*
 
 body.json
 src/gen
+.pages

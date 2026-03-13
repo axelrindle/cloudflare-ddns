@@ -1,22 +1,31 @@
 {
+    "private": true,
     "name": "cloudflare-ddns",
+    "description": "🤖 Cloudflare Worker for mass-updating DNS records",
+    "version": "1.0.0",
     "type": "module",
     "scripts": {
         "dev": "wrangler dev",
         "deploy": "wrangler deploy --minify",
         "cf-typegen": "wrangler types --env-interface CloudflareBindings src/gen/wrangler.d.ts",
+        "pages": "bun run src/pages.ts",
         "lint": "eslint --concurrency auto",
         "lint:inspect": "bunx @eslint/config-inspector --open=false"
     },
     "dependencies": {
+        "@hono/standard-validator": "^0.2.2",
         "@hono/zod-validator": "^0.7.6",
+        "@scalar/hono-api-reference": "^0.10.3",
         "hono": "^4.12.5",
+        "hono-openapi": "^1.3.0",
         "zod": "^4.3.6"
     },
     "devDependencies": {
         "@actcoding/eslint-config": "^0.0.12-2",
         "@eslint/config-inspector": "^1.5.0",
         "@eslint/json": "^1.1.0",
+        "@types/bun": "^1.3.10",
+        "@types/node": "^25.5.0",
         "eslint": "^10.0.3",
         "wrangler": "^4.71.0"
     }
