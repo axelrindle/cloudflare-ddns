@@ -6,17 +6,24 @@
     "observability": {
         "logs": {
             "enabled": true,
-            "persist": true
-        }
+            "persist": true,
+        },
     },
     "routes": [
         {
             "custom_domain": true,
             "pattern": "ddns.rindle.dev",
-            "zone_name": "rindle.dev"
-        }
+            "zone_name": "rindle.dev",
+        },
     ],
     "assets": {
-        "directory": "public"
-    }
+        "directory": "public",
+    },
+    "kv_namespaces": [
+        {
+            "id": "ddns",
+            "binding": "ddns",
+            "remote": false,
+        },
+    ],
 }
