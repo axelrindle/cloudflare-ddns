@@ -1,5 +1,5 @@
 import { mkdir } from 'node:fs/promises'
-import app from '.'
+import app, { scalarConfiguration } from '.'
 import { writeFile } from 'node:fs/promises'
 
 const server = Bun.serve({
@@ -11,11 +11,38 @@ const server = Bun.serve({
     port: 1337,
 })
 
-const html = await server.fetch('/api.html')
 const openapi = await server.fetch('/api.json')
 
+const config = {
+    ...scalarConfiguration,
+    url: `/${process.env.PAGES_BASE_PATH}/api.json`,
+}
+
+const html = `
+<!doctype html>
+<html>
+  <head>
+    <title>Scalar API Reference</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- Load the Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
+
+    <!-- Initialize the Scalar API Reference -->
+    <script type="text/javascript">
+      Scalar.createApiReference('#app', ${JSON.stringify(config)})
+    </script>
+  </body>
+</html>
+`
+
 await mkdir('.pages', { recursive: true })
-await writeFile('.pages/index.html', await html.text())
+await writeFile('.pages/index.html', html)
 await writeFile('.pages/api.json', await openapi.text())
 
 await server.stop()

@@ -24,6 +24,7 @@
         "@actcoding/eslint-config": "^0.0.12-2",
         "@eslint/config-inspector": "^1.5.0",
         "@eslint/json": "^1.1.0",
+        "@scalar/types": "^0.7.3",
         "@types/bun": "^1.3.10",
         "@types/node": "^25.5.0",
         "eslint": "^10.0.3",

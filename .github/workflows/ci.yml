@@ -76,6 +76,8 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Build page
+        env:
+          PAGES_BASE_PATH: ${{ github.event.repository.name }}
         run: bun run pages
 
       - name: Setup Pages

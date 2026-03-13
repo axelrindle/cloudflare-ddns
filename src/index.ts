@@ -1,4 +1,5 @@
 import { Scalar } from '@scalar/hono-api-reference'
+import { HtmlRenderingConfiguration } from '@scalar/types/api-reference'
 import { Hono } from 'hono'
 import { openAPIRouteHandler } from 'hono-openapi'
 import { description, version } from '../package.json'
@@ -41,21 +42,29 @@ app.get('/api.json',
     }),
 )
 
+const scalarConfiguration = {
+    theme: 'mars',
+    hideSearch: true,
+    hideClientButton: true,
+    persistAuth: true,
+    mcp: {
+        disabled: true,
+    },
+    agent: {
+        disabled: true,
+    },
+} satisfies Partial<HtmlRenderingConfiguration>
+
 app.get('/api.html',
     onlyDevelopment,
     Scalar({
-        theme: 'mars',
-        hideSearch: true,
-        hideClientButton: true,
-        persistAuth: true,
-        mcp: {
-            disabled: true,
-        },
-        agent: {
-            disabled: true,
-        },
         url: '/api.json',
     }),
 )
 
 export default app
+
+export {
+    scalarConfiguration,
+}
+
