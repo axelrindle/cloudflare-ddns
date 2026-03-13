@@ -1,29 +1,29 @@
 {
-    "$schema": "node_modules/wrangler/config-schema.json",
-    "name": "cloudflare-ddns",
-    "compatibility_date": "2025-08-03",
-    "main": "./src/index.ts",
-    "observability": {
-        "logs": {
-            "enabled": true,
-            "persist": true,
-        },
-    },
-    "routes": [
-        {
-            "custom_domain": true,
-            "pattern": "ddns.rindle.dev",
-            "zone_name": "rindle.dev",
-        },
-    ],
-    "assets": {
-        "directory": "public",
-    },
-    "kv_namespaces": [
-        {
-            "id": "ddns",
-            "binding": "ddns",
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "cloudflare-ddns",
+	"compatibility_date": "2025-08-03",
+	"main": "./src/index.ts",
+	"observability": {
+		"logs": {
+			"enabled": true,
+			"persist": true,
+		},
+	},
+	"routes": [
+		{
+			"custom_domain": true,
+			"pattern": "ddns.rindle.dev",
+			"zone_name": "rindle.dev",
+		},
+	],
+	"assets": {
+		"directory": "public",
+	},
+	"kv_namespaces": [
+		{
+			"binding": "ddns",
+			"id": "5389c9c407924615b7511c18f22fd5ac",
             "remote": false,
-        },
-    ],
+		},
+	],
 }
