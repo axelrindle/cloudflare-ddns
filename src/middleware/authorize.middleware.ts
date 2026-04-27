@@ -3,6 +3,6 @@ import { createMiddleware } from 'hono/factory'
 import { HonoBindings } from '../constants'
 
 export const authorize = createMiddleware<HonoBindings>(async (c, next) => {
-    const handler = bearerAuth({ token: c.env.ACCESS_TOKEN })
+    const handler = bearerAuth({ token: c.env.DDNS_ACCESS_TOKEN })
     return handler(c, next)
 })
