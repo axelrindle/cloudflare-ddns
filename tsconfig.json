@@ -6,8 +6,11 @@
         "strict": true,
         "skipLibCheck": true,
         "lib": [
-            "ESNext"
+            "ESNext",
         ],
-        "types": ["bun", "node"]
+        "types": ["bun", "node"],
     },
+    "include": [
+        "**/*.ts",
+    ],
 }

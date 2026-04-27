@@ -12,8 +12,8 @@
 	"routes": [
 		{
 			"custom_domain": true,
-			"pattern": "ddns.rindle.dev",
-			"zone_name": "rindle.dev",
+			"pattern": "${ROUTE_DOMAIN}",
+			"zone_name": "${ROUTE_ZONE_NAME}",
 		},
 	],
 	"assets": {
@@ -22,8 +22,11 @@
 	"kv_namespaces": [
 		{
 			"binding": "ddns",
-			"id": "5389c9c407924615b7511c18f22fd5ac",
+            "id": "${KV_NS_ID_DDNS}",
             "remote": false,
 		},
 	],
+    "vars": {
+        "NODE_ENV": "production"
+    }
 }

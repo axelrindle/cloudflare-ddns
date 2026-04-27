@@ -36,3 +36,7 @@ lerna-debug.log*
 body.json
 src/gen
 .pages
+
+*.env
+*.gen
+_gen_*
