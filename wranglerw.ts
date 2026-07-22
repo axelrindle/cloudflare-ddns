@@ -33,7 +33,7 @@ async function match(line: string): Promise<boolean> {
     const [replace, key] = match
     const value = Bun.env[key]
     if (!value) {
-        return false
+        throw new Error(`environment variable "${key} not found"`)
     }
 
     await targetHandle.write(`${line.replace(replace, value)}\n`)
