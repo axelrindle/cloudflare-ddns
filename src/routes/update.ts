@@ -82,10 +82,12 @@ For more information view the [Cloudflare API documentation](https://developers.
                 })
 
                 if (res.status !== 200) {
+                    const meta = await res.json()
+                    console.error('Update failed', meta)
                     return c.json({
                         success: false,
                         status: res.status,
-                        meta: await res.json(),
+                        meta,
                     }, 400)
                 }
             }
